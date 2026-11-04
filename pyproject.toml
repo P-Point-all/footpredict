@@ -1,0 +1,12 @@
+[project]
+name = "footpredict"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "ipykernel>=7.4.0",
+    "numpy>=2.5.4",
+    "pandas>=3.1.0",
+    "thefuzz>=0.22.1",
+]

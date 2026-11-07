@@ -8,13 +8,15 @@ from collections import Counter
 class BaseFootballModel:
     """
     Base class for Football models
+    Need to specify the training DataFrame at instantiation to be able to use the dynamic prediction of a season
     """
     
-    def __init__(self):
+    def __init__(self, df_train: pd.DataFrame = None):
         self.teams = []
         self.team_to_idx = {}
         self.idx_to_team = {}
         self.n_teams = 0
+        self.df_train = df_train
 
     def _fit_team_indices(self, df: pd.DataFrame):
         """Identify unique team names and generate index mapping. Usefull to manipulate matrices instead of DataFrames
@@ -147,14 +149,14 @@ class StaticDoublePoisson(BaseFootballModel):
             # Home 
             Y[row_home] = home_goals[k]
             X[row_home, 0] = 1.0  # Home advantage
-            X[row_home, 1 + i] = 1.0  # home team offensive
+            X[row_home, 1 + i] = 1.0
             X[row_home, 1 + self.n_teams + j] = -1.0  # Away team defensive 
-
             # Away
             Y[row_away] = away_goals[k]
             X[row_away, 0] = 0.0  # No home advantage
             X[row_away, 1 + j] = 1.0  # Away team offensive
             X[row_away, 1 + self.n_teams + i] = -1.0  # Home team defensive
+
 
         return X, Y
     
@@ -175,8 +177,17 @@ class StaticDoublePoisson(BaseFootballModel):
         """
         Parameter Estimation of the model by minimizing the NLL
         """
-        X, Y = self.prepare_design_matrix(df)
-        
+        # If training DataFrame is not provided, use the one specified at instantiation
+        if df is None:
+            if self.df_train is None:
+                raise ValueError("No training DataFrame provided.")
+            df = self.df_train
+        elif self.df_train is None:
+            self.df_train = df
+            
+        # Prepare matrices
+        X, Y = self.prepare_design_matrix(self.df_train)
+
         # Initialisation : 0 for all coefficients => lambda = 1 for all teams and all matches
         initial_guess = np.zeros(X.shape[1])
         
@@ -190,7 +201,7 @@ class StaticDoublePoisson(BaseFootballModel):
             args=(X, Y),
             method='SLSQP',
             constraints=constraints,
-            options={'disp': True, 'maxiter': 1000}
+            options={'disp': False, 'maxiter': 1000}
         )
         
         if result.success:
@@ -279,37 +290,61 @@ class StaticDoublePoisson(BaseFootballModel):
         away_team: round(prob_away, 3)
     }
 
-    def predict_season(self, season : pd.DataFrame):
+    def predict_season(self, season : pd.DataFrame, dynamic: bool = True):
         """
-        Predict the ranking for the given season
+        Predict the ranking for the given season dynamically.
+        If dynamic=True, after each week, we update the coefficients by adding the simulated results in the training DataFrame.
         """
-        # Split the season
+        # Get the training DataFrame to be able to update it without forgetting the initial training (based on truth)
+        df_train_bis = self.df_train.copy()
+        #Split the season
         played, left = self._split_matches(season)
+        left = left.copy()
         
-        # Predict the score for all left matches
-        df_sim = left.copy()
-        alpha_h = df_sim["home_team"].map(self.alpha).fillna(0)
-        beta_h  = df_sim["home_team"].map(self.beta).fillna(0)
-        alpha_a = df_sim["away_team"].map(self.alpha).fillna(0)
-        beta_a  = df_sim["away_team"].map(self.beta).fillna(0)
+        # Group the left matches by week
+        weeks_groups = list(left.groupby("t", sort=True))
+        total_weeks = len(weeks_groups)
+        simulated_weeks = []
         
-        lambda_home = np.exp(self.home_advantage + alpha_h - beta_a)
-        lambda_away = np.exp(alpha_a - beta_h)
+        for i, (t_week, df_week) in enumerate(weeks_groups):
+            df_week = df_week.copy()
+                
+            # Get coefficients
+            alpha_h = df_week["home_team"].map(self.alpha).fillna(0).to_numpy()
+            beta_h = df_week["home_team"].map(self.beta).fillna(0).to_numpy()
+            alpha_a = df_week["away_team"].map(self.alpha).fillna(0).to_numpy()
+            beta_a = df_week["away_team"].map(self.beta).fillna(0).to_numpy()   
+                
+            # Lambda computation for each match
+            l_home = np.exp(self.home_advantage + alpha_h - beta_a)
+            l_away = np.exp(alpha_a - beta_h)
+            
+            # Simulation
+            df_week["home_goals"] = np.random.poisson(l_home)
+            df_week["away_goals"] = np.random.poisson(l_away)
+            df_week["played"] = True
+            
+            # Add the simulated week in a list to merge later with the played matches
+            simulated_weeks.append(df_week)
+            
+            # Retraining the model with the new simulated week to update the coefficients for the next week
+            if dynamic and i < total_weeks - 1:
+                df_train_bis = pd.concat([df_train_bis, df_week], ignore_index=True)
+                self.fit(df_train_bis)
         
-        df_sim["home_goals"] = np.random.poisson(lambda_home)
-        df_sim["away_goals"] = np.random.poisson(lambda_away)
-        
+        # Rebuild the DataFrame with all the simulated weeks
+        left_sim = pd.concat(simulated_weeks, ignore_index=True)
         # Merge back both played and simulated matches
-        season_sim = pd.concat([played,df_sim])
+        season_sim = pd.concat([played,left_sim],ignore_index=True)
         
         # Compute standings
         standings = self._compute_standings(season_sim)
         
-        return standings
+        return standings, season_sim
     
-    def predict_season_proba(self, season : pd.DataFrame, n_simu = 1000, stats: bool= True):
+    def predict_season_proba(self, season : pd.DataFrame, n_simu = 100,dynamic: bool= True, stats: bool= True):
         """
-        Predict the ranking probabilities over multiple simulated seasons
+        Predict the ranking probabilities over multiple simulated seasons by simulating them dynamically
         """
         # Get team names
         unique_teams = sorted(
@@ -320,7 +355,7 @@ class StaticDoublePoisson(BaseFootballModel):
         
         for sim_id in range (n_simu):
             #Simulate season
-            standings = self.predict_season(season)
+            standings, _ = self.predict_season(season)
             # Store ranks
             sim_data = standings[['team', 'rank']].copy()
             sim_data['sim_id'] = sim_id

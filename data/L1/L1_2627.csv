@@ -71,7 +71,246 @@ F1,25/10/2026,16:15,Marseille,Le Havre,4,3,H,2,0,H,1.54,3.1,11,22,5,7,15,11,4,3,
 F1,25/10/2026,16:15,Rennes,Strasbourg,3,0,H,2,0,H,1.92,0.89,15,12,5,4,10,17,2,4,1,3,0,0,1.8,4.33,3.75,1.8,4.2,4,1.7,4.1,3.9,1.75,4.2,4.1,1.73,4.2,4,1.73,4.2,3.9,1.8,4.33,4.1,1.75,4.2,3.92,1.84,4.4,4.2,1.44,2.75,1.45,2.9,1.41,2.75,1.47,2.94,-0.75,2.03,1.83,2.03,1.84,1.92,1.82,2.03,1.93,1.8,4.2,4,1.8,4,4,1.8,4,3.9,1.83,4,3.9,1.75,3.8,4,1.75,4,4,1.83,4.2,4.2,1.79,4,3.96,1.85,4.2,4.3,1.53,2.5,1.58,2.63,1.51,2.46,1.61,2.58,-0.5,1.78,2.03,1.8,2.05,1.75,2,1.85,2.16
 F1,25/10/2026,16:15,Toulouse,Troyes,0,0,D,0,0,D,0.84,0.39,7,8,3,0,19,14,4,2,6,2,0,0,1.6,4,5.5,1.6,4.2,5,1.55,4.1,5,1.63,4.2,4.8,1.57,4,5,1.57,4,5,1.63,4.33,5.5,1.59,4.13,4.97,1.64,4.4,5.5,1.62,2.3,1.62,2.3,1.59,2.26,1.64,2.4,-1,2,1.85,2,1.85,1.96,1.79,2.03,1.92,1.6,4,5.75,1.57,4.33,5.5,1.57,4.33,5.25,1.58,4.33,5,1.57,4,5.5,1.57,4.2,5.5,1.6,4.33,5.75,1.57,4.23,5.3,1.62,4.4,6,1.62,2.3,1.62,2.4,1.57,2.31,1.66,2.46,-1,2,1.85,2,1.87,1.93,1.81,2.02,1.94
 F1,26/10/2026,19:30,Paris SG,Lyon,2,0,H,0,0,D,0.87,0.62,17,8,10,5,8,14,7,4,2,1,0,0,1.45,4.75,6.5,1.44,5,6.5,1.4,4.8,6,1.46,5,6,1.36,5,6,1.4,5.25,6.25,1.48,5.25,6.5,1.43,4.94,6.1,1.45,5.7,7,1.4,3,1.4,3,1.37,2.93,1.41,3.2,-1.25,1.93,1.93,1.93,1.93,1.86,1.88,1.94,2.03,1.3,5.5,9,1.3,5.5,7.5,1.3,5.75,8.5,1.33,6,7.5,1.3,5.5,8.5,1.3,5.5,8.5,1.4,6,9,1.32,5.62,7.98,1.36,6,9.8,1.33,3.4,1.38,3.4,1.33,3.19,1.39,3.45,-1.5,1.83,2.03,1.93,2.03,1.81,1.94,1.85,2.13
+F1,30/10/2026,19:30,Le Havre,Paris SG
+F1,30/10/2026,19:30,Nice,Rennes
+F1,30/10/2026,19:30,Lille,Lens
+F1,31/10/2026,19:30,Troyes,Le Mans
 F1,01/11/2026,19:30,Strasbourg,Auxerre
-F1,08/11/2026,19:30,Toulouse,Strasbourg
-F1,08/11/2026,19:30,Nice,Lens
-F1,15/11/2026,19:30,Strasbourg,Le Havre
+F1,01/11/2026,19:30,Lyon,Angers
+F1,01/11/2026,19:30,Paris FC,Monaco
+F1,01/11/2026,19:30,Marseille,Toulouse
+F1,02/11/2026,19:30,Lorient,Brest
+F1,06/11/2026,19:30,Toulouse,Strasbourg
+F1,07/11/2026,19:30,Auxerre,Paris FC
+F1,07/11/2026,19:30,Paris SG,Troyes
+F1,08/11/2026,19:30,Rennes,Lille
+F1,08/11/2026,19:30,Angers,Nice
+F1,08/11/2026,19:30,Le Mans,Monaco
+F1,08/11/2026,19:30,Brest,Lyon
+F1,08/11/2026,19:30,Le Havre,Lorient
+F1,08/11/2026,19:30,Lens,Marseille
+F1,20/11/2026,19:30,Troyes,Le Havre
+F1,21/11/2026,19:30,Nice,Paris SG
+F1,21/11/2026,19:30,Strasbourg,Brest
+F1,21/11/2026,19:30,Lille,Lyon
+F1,21/11/2026,19:30,Lens,Toulouse
+F1,21/11/2026,19:30,Monaco,Auxerre
+F1,22/11/2026,19:30,Paris FC,Angers
+F1,22/11/2026,19:30,Lorient,Rennes
+F1,22/11/2026,19:30,Marseille,Le Mans
+F1,27/11/2026,19:30,Brest,Paris FC
+F1,28/11/2026,19:30,Angers,Lens
+F1,28/11/2026,19:30,Paris SG,Lorient
+F1,28/11/2026,19:30,Le Mans,Lille
+F1,27/11/2026,19:30,Nice,Troyes
+F1,27/11/2026,19:30,Le Havre,Strasbourg
+F1,27/11/2026,19:30,Auxerre,Marseille
+F1,27/11/2026,19:30,Toulouse,Rennes
+F1,27/11/2026,19:30,Lyon,Monaco
+F1,04/12/2026,19:30,Toulouse,Paris SG
+F1,04/12/2026,19:30,Lille,Auxerre
+F1,04/12/2026,19:30,Lens,Le Havre
+F1,04/12/2026,19:30,Strasbourg,Lorient
+F1,04/12/2026,19:30,Paris FC,Le Mans
+F1,04/12/2026,19:30,Monaco,Angers
+F1,04/12/2026,19:30,Troyes,Lyon
+F1,04/12/2026,19:30,Rennes,Brest
+F1,04/12/2026,19:30,Marseille,Nice
+F1,11/12/2026,19:30,Auxerre,Toulouse
+F1,11/12/2026,19:30,Paris SG,Paris FC
+F1,11/12/2026,19:30,Le Havre,Le Mans
+F1,11/12/2026,19:30,Brest,Troyes
+F1,11/12/2026,19:30,Nice,Lens
+F1,11/12/2026,19:30,Angers,Strasbourg
+F1,11/12/2026,19:30,Lorient,Lille
+F1,11/12/2026,19:30,Rennes,Monaco
+F1,11/12/2026,19:30,Lyon,Marseille
+F1,02/01/2027,19:30,Brest,Marseille
+F1,02/01/2027,19:30,Paris FC,Le Havre
+F1,02/01/2027,19:30,Troyes,Rennes
+F1,02/01/2027,19:30,Lorient,Auxerre
+F1,02/01/2027,19:30,Toulouse,Angers
+F1,02/01/2027,19:30,Monaco,Nice
+F1,02/01/2027,19:30,Le Mans,Lyon
+F1,02/01/2027,19:30,Lille,Strasbourg
+F1,02/01/2027,19:30,Lens,Paris SG
+F1,15/01/2027,19:30,Marseille,Lille
+F1,15/01/2027,19:30,Angers,Paris SG
+F1,15/01/2027,19:30,Auxerre,Troyes
+F1,15/01/2027,19:30,Strasbourg,Le Mans
+F1,15/01/2027,19:30,Rennes,Lens
+F1,15/01/2027,19:30,Nice,Le Havre
+F1,15/01/2027,19:30,Paris FC,Toulouse
+F1,15/01/2027,19:30,Monaco,Brest
+F1,15/01/2027,19:30,Lyon,Lorient
+F1,22/01/2027,19:30,Troyes,Monaco
+F1,22/01/2027,19:30,Lille,Paris FC
+F1,22/01/2027,19:30,Paris SG,Auxerre
+F1,22/01/2027,19:30,Toulouse,Nice
+F1,22/01/2027,19:30,Le Mans,Angers
+F1,22/01/2027,19:30,Lens,Brest
+F1,22/01/2027,19:30,Le Havre,Rennes
+F1,22/01/2027,19:30,Lorient,Marseille
+F1,22/01/2027,19:30,Strasbourg,Lyon
+F1,29/01/2027,19:30,Brest,Strasbourg
+F1,29/01/2027,19:30,Monaco,Paris SG
+F1,29/01/2027,19:30,Toulouse,Lens
+F1,29/01/2027,19:30,Le Mans,Nice
+F1,29/01/2027,19:30,Angers,Le Havre
+F1,29/01/2027,19:30,Paris FC,Auxerre
+F1,29/01/2027,19:30,Rennes,Lorient
+F1,29/01/2027,19:30,Marseille,Troyes
+F1,29/01/2027,19:30,Lyon,Lille
+F1,06/02/2027,19:30,Lorient,Le Mans
+F1,06/02/2027,19:30,Rennes,Lyon
+F1,06/02/2027,19:30,Le Havre,Toulouse
+F1,06/02/2027,19:30,Troyes,Lille
+F1,06/02/2027,19:30,Lens,Angers
+F1,06/02/2027,19:30,Auxerre,Monaco
+F1,06/02/2027,19:30,Nice,Brest
+F1,06/02/2027,19:30,Strasbourg,Paris FC
+F1,06/02/2027,19:30,Paris SG,Marseille
+F1,13/02/2027,19:30,Brest,Rennes
+F1,13/02/2027,19:30,Paris FC,Troyes
+F1,13/02/2027,19:30,Toulouse,Monaco
+F1,13/02/2027,19:30,Auxerre,Strasbourg
+F1,13/02/2027,19:30,Lyon,Lens
+F1,13/02/2027,19:30,Lorient,Le Havre
+F1,13/02/2027,19:30,Lille,Nice
+F1,13/02/2027,19:30,Le Mans,Paris SG
+F1,13/02/2027,19:30,Marseille,Angers
+F1,20/02/2027,19:30,Le Havre,Lyon
+F1,20/02/2027,19:30,Nice,Auxerre
+F1,20/02/2027,19:30,Strasbourg,Marseille
+F1,20/02/2027,19:30,Paris SG,Brest
+F1,20/02/2027,19:30,Monaco,Le Mans
+F1,20/02/2027,19:30,Angers,Paris FC
+F1,20/02/2027,19:30,Lens,Troyes
+F1,20/02/2027,19:30,Rennes,Toulouse
+F1,20/02/2027,19:30,Lille,Lorient
+F1,27/02/2027,19:30,Marseille,Rennes
+F1,27/02/2027,19:30,Le Mans,Paris FC
+F1,27/02/2027,19:30,Strasbourg,Le Havre
+F1,27/02/2027,19:30,Auxerre,Lille
+F1,27/02/2027,19:30,Lyon,Toulouse
+F1,27/02/2027,19:30,Brest,Monaco
+F1,27/02/2027,19:30,Troyes,Nice
+F1,27/02/2027,19:30,Lorient,Angers
+F1,27/02/2027,19:30,Paris SG,Lens
+F1,06/03/2027,19:30,Lille,Marseille
+F1,06/03/2027,19:30,Angers,Auxerre
+F1,06/03/2027,19:30,Paris SG,Rennes
+F1,06/03/2027,19:30,Paris FC,Brest
+F1,06/03/2027,19:30,Troyes,Lorient
+F1,06/03/2027,19:30,Le Havre,Nice
+F1,06/03/2027,19:30,Lens,Strasbourg
+F1,06/03/2027,19:30,Monaco,Lyon
+F1,06/03/2027,19:30,Toulouse,Le Mans
+F1,13/03/2027,19:30,Nice,Toulouse
+F1,13/03/2027,19:30,Lyon,Troyes
+F1,13/03/2027,19:30,Le Mans,Rennes
+F1,13/03/2027,19:30,Brest,Lille
+F1,13/03/2027,19:30,Paris FC,Lorient
+F1,13/03/2027,19:30,Marseille,Monaco
+F1,13/03/2027,19:30,Strasbourg,Angers
+F1,13/03/2027,19:30,Auxerre,Paris SG
+F1,13/03/2027,19:30,Le Havre,Lens
+F1,20/03/2027,19:30,Rennes,Paris FC
+F1,20/03/2027,19:30,Angers,Le Mans
+F1,20/03/2027,19:30,Lens,Lille
+F1,20/03/2027,19:30,Paris SG,Strasbourg
+F1,20/03/2027,19:30,Lorient,Nice
+F1,20/03/2027,19:30,Toulouse,Brest
+F1,20/03/2027,19:30,Troyes,Auxerre
+F1,20/03/2027,19:30,Monaco,Le Havre
+F1,20/03/2027,19:30,Marseille,Lyon
+F1,03/04/2027,19:30,Nice,Lyon
+F1,03/04/2027,19:30,Auxerre,Lens
+F1,03/04/2027,19:30,Brest,Lorient
+F1,03/04/2027,19:30,Le Havre,Troyes
+F1,03/04/2027,19:30,Paris FC,Paris SG
+F1,03/04/2027,19:30,Angers,Monaco
+F1,03/04/2027,19:30,Strasbourg,Toulouse
+F1,03/04/2027,19:30,Le Mans,Marseille
+F1,03/04/2027,19:30,Lille,Rennes
+F1,10/04/2027,19:30,Nice,Paris FC
+F1,10/04/2027,19:30,Le Mans,Auxerre
+F1,10/04/2027,19:30,Lorient,Lens
+F1,10/04/2027,19:30,Lyon,Strasbourg
+F1,10/04/2027,19:30,Marseille,Brest
+F1,10/04/2027,19:30,Paris SG,Le Havre
+F1,10/04/2027,19:30,Monaco,Rennes
+F1,10/04/2027,19:30,Troyes,Angers
+F1,10/04/2027,19:30,Lille,Toulouse
+F1,17/04/2027,19:30,Le Havre,Marseille
+F1,17/04/2027,19:30,Rennes,Troyes
+F1,17/04/2027,19:30,Brest,Le Mans
+F1,17/04/2027,19:30,Toulouse,Paris FC
+F1,17/04/2027,19:30,Angers,Lyon
+F1,17/04/2027,19:30,Lens,Nice
+F1,17/04/2027,19:30,Auxerre,Lorient
+F1,17/04/2027,19:30,Monaco,Strasbourg
+F1,17/04/2027,19:30,Paris SG,Lille
+F1,24/04/2027,19:30,Paris FC,Lens
+F1,24/04/2027,19:30,Troyes,Toulouse
+F1,24/04/2027,19:30,Lyon,Brest
+F1,24/04/2027,19:30,Lille,Monaco
+F1,24/04/2027,19:30,Strasbourg,Rennes
+F1,24/04/2027,19:30,Le Mans,Le Havre
+F1,24/04/2027,19:30,Nice,Angers
+F1,24/04/2027,19:30,Marseille,Auxerre
+F1,24/04/2027,19:30,Lorient,Paris SG
+F1,01/05/2027,19:30,Monaco,Lorient
+F1,01/05/2027,19:30,Strasbourg,Lille
+F1,01/05/2027,19:30,Rennes,Nice
+F1,01/05/2027,19:30,Le Havre,Paris FC
+F1,01/05/2027,19:30,Troyes,Brest
+F1,01/05/2027,19:30,Paris SG,Angers
+F1,01/05/2027,19:30,Auxerre,Lyon
+F1,01/05/2027,19:30,Lens,Le Mans
+F1,01/05/2027,19:30,Toulouse,Marseille
+F1,08/05/2027,19:30,Le Mans,Troyes
+F1,08/05/2027,19:30,Nice,Marseille
+F1,08/05/2027,19:30,Lens,Monaco
+F1,08/05/2027,19:30,Brest,Auxerre
+F1,08/05/2027,19:30,Paris FC,Lille
+F1,08/05/2027,19:30,Rennes,Le Havre
+F1,08/05/2027,19:30,Angers,Toulouse,
+F1,08/05/2027,19:30,Lorient,Strasbourg
+F1,08/05/2027,19:30,Lyon,Paris SG
+F1,16/05/2027,19:30,Paris SG,Nice
+F1,16/05/2027,19:30,Auxerre,Rennes
+F1,16/05/2027,19:30,Toulouse,Lorient
+F1,16/05/2027,19:30,Brest,Le Havre
+F1,16/05/2027,19:30,Marseille,Lens
+F1,16/05/2027,19:30,Lyon,Le Mans
+F1,16/05/2027,19:30,Strasbourg,Troyes
+F1,16/05/2027,19:30,Lille,Angers
+F1,16/05/2027,19:30,Monaco,Paris FC
+F1,22/05/2027,19:30,Angers,Brest
+F1,22/05/2027,19:30,Troyes,Paris SG
+F1,22/05/2027,19:30,Toulouse,Auxerre
+F1,22/05/2027,19:30,Le Mans,Strasbourg
+F1,22/05/2027,19:30,Paris FC,Marseille
+F1,22/05/2027,19:30,Le Havre,Lille
+F1,22/05/2027,19:30,Lens,Rennes
+F1,22/05/2027,19:30,Nice,Monaco
+F1,22/05/2027,19:30,Lorient,Lyon
+F1,29/05/2027,19:30,Lyon,Paris FC
+F1,29/05/2027,19:30,Rennes,Angers
+F1,29/05/2027,19:30,Stasbourg,Nice
+F1,29/05/2027,19:30,Paris SG,Toulouse
+F1,29/05/2027,19:30,Auxerre,Le Havre
+F1,29/05/2027,19:30,Lille,Le Mans
+F1,29/05/2027,19:30,Monaco,Troyes
+F1,29/05/2027,19:30,Brest,Lens
+F1,29/05/2027,19:30,Marseille,Lorient
+
+
+
+
+
+
+
+
+

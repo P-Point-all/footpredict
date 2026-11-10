@@ -70,28 +70,26 @@ def clean_team_names(df: pd.DataFrame, threshold: int = 85) -> pd.DataFrame:
     
     return mapping
 
-def preprocess_data(folder: str, output_file: str,cols_to_keep: list[str] = ["Date","HomeTeam","AwayTeam","FTHG","FTAG"],clean_names: bool = False) -> pd.DataFrame:
+def preprocess_data(files: list[str],cols_to_keep: list[str] = ["Date","HomeTeam","AwayTeam","FTHG","FTAG"],clean_names: bool = False) -> pd.DataFrame:
     """
     Preprocess data from multiple CSV files: load and clean, add season, concatenate and add week temporality index.
     Clean team names if demanded.
-    Write the final dataframe to a CSV file.
 
     Args:
-        folder (str): Path to the folder containing CSV files.
-        output_file (str): Name of the output file in the data folder
-        cols_to_keep (list[str]): List of columns to keep in the dataframe.
+        folder (str): Path to the folder containing CSV files
+        cols_to_keep (list[str]): List of columns to keep in the dataframe
         clean_names (Bool): Indicate if team names should be unified or not using a similarity algorithm
 
     Returns:
-        pd.DataFrame: Preprocessed dataframe.
+        pd.DataFrame, pd.DataFrame: Training and testing dataframes
     """
     all_seasons_list = []
     
     # Sort to conserve season order, imply that the file names contain the years of the season
-    files = sorted([os.path.join(folder, file) for file in os.listdir(folder) if file.endswith('.csv')])
+    sorted_files = sorted(files, key=lambda x: os.path.basename(x))
     
     # Load and clean all data files
-    for season_idx, file_path in enumerate(files):
+    for season_idx, file_path in enumerate(sorted_files):
         df = load_and_clean_data(file_path, cols_to_keep)
         
         # Add season index
@@ -129,10 +127,6 @@ def preprocess_data(folder: str, output_file: str,cols_to_keep: list[str] = ["Da
     
     # Train : All the played matches
     df_train = df_all[df_all["played"]].copy()
-    
-    # Upload data
-    df_train.to_csv(f"data/train_{output_file}.csv", index=False)
-    df_test.to_csv(f"data/test_{output_file}.csv", index=False)
     
     return df_train, df_test
     

@@ -93,6 +93,10 @@ class BaseFootballModel:
 
         # Add rank
         standings["rank"] = standings.index + 1
+        # Reorder columns
+        standings = standings[
+            ["rank", "team", "played", "points", "gf", "ga", "gd"]
+        ]
 
         return standings
         

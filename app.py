@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 import time
 import pandas as pd
+import numpy as np
 import plotly.express as px
 from src.utils import highlight_standing_rows
 
@@ -185,8 +186,96 @@ with tab_saison:
                 teams = list(kpis.keys())
                 selected_team = st.selectbox("Show stats for :", teams,key="kpi_team_selector")
                 
+                # Show KPIs for selected team
                 team_stats = kpis[selected_team]
                 c1, c2, c3 = st.columns(3)
                 c1.metric("🏆 Champion", f"{team_stats['Title']} %")
                 c2.metric("⭐ Top 4 (LDC)", f"{team_stats['Top 4']} %")
                 c3.metric("🔻 Relegation", f"{team_stats['Relegation']} %")
+                
+                # Histogram of ranks
+                st.divider()
+                st.subheader(f"📊 Final rank distribution — {selected_team}")
+                rank_dict = team_stats["Rank_Counts"]
+                #Dissociation of ranks and counts
+                ranks = np.array([int(r) for r in rank_dict.keys()])
+                counts = np.array([int(c) for c in rank_dict.values()])
+                # Clean reconstruction for quantile computation
+                expanded_ranks = np.repeat(ranks, counts)
+                q25, q50, q75 = np.percentile(expanded_ranks, [25, 50, 75], method="inverted_cdf")
+                
+                # Quantiles as KPI
+                col_q1, col_q2, col_q3 = st.columns(3)
+                col_q1.metric(
+                    "Optimistic scenario",
+                    f"{q25:.1f}",
+                    help="The team finish at this place or better in at least a quarter of the simulations.",
+                )
+                col_q2.metric(
+                    "Realistic scenario",
+                    f"{q50:.1f}",
+                    help="Median rank over all simulations.",
+                )
+                col_q3.metric(
+                    "Pessimistic scenario",
+                    f"{q75:.1f}",
+                    help="The team finish at this place or worse in at least a quarter of the simulations.",
+                )
+                
+                # Dataframe for the visualisation
+                df_dist = (
+                    pd.DataFrame({"Rank": ranks, "Occurrences": counts})
+                    .sort_values(by="Rank")
+                    .reset_index(drop=True)
+                )
+                df_dist["Percentage"] = (df_dist["Occurrences"] / counts.sum()) * 100
+                # Histogramm
+                fig_hist = px.bar(
+                    df_dist,
+                    x="Rank",
+                    y="Occurrences",
+                    text=df_dist["Percentage"].apply(
+                        lambda x: f"{x:.1f}%" if x > 2 else ""
+                    ),  # Show text if prob > 2% 
+                    labels={"Rank": "Rank", "Occurrences": "Occurence"},
+                    title=f"Repartition of ranks",
+                )
+                # Vertical lines for quantiles
+                fig_hist.add_vline(
+                    x=q50,
+                    line_width=2,
+                    line_dash="dash",
+                    line_color="blue",
+                    annotation_text="Median",
+                    annotation_position="top right",
+                )
+                fig_hist.add_vline(
+                    x=q25,
+                    line_width=1.5,
+                    line_dash="dot",
+                    line_color="green",
+                    annotation_text="Q25",
+                    annotation_position="top left",
+                )
+                fig_hist.add_vline(
+                    x=q75,
+                    line_width=1.5,
+                    line_dash="dot",
+                    line_color="red",
+                    annotation_text="Q75",
+                    annotation_position="top right",
+                )
+
+                # Axis adjustment
+                min_rank = min(ranks) if len(ranks) > 0 else 1
+                max_rank = max(ranks) if len(ranks) > 0 else 18
+                fig_hist.update_xaxes(
+                    tickmode="linear",
+                    tick0=1,
+                    dtick=1,
+                    range=[min_rank - 0.5, max_rank + 0.5],
+                )
+                fig_hist.update_traces(textposition="outside")
+                fig_hist.update_layout(margin=dict(l=10, r=10, t=40, b=20), height=420)
+
+                st.plotly_chart(fig_hist, use_container_width=True)

@@ -67,7 +67,7 @@ def train_model(req: MappingRequest):
         session_data["teams"] = DPoisson.teams
         session_data["model"] = DPoisson
     else:
-        {"status": "error", "message": "No model has been chosen", "n_teams": 0}
+        return {"status": "error", "message": "No model has been chosen", "n_teams": 0}
 
     session_data["df_train"] = df_train
     session_data["df_test"] = df_test
@@ -167,6 +167,11 @@ def run_monte_carlo(task_id: str, session_id: str, n_sims: int):
     }).sort_values(by="Title", ascending=False)
     # Conversion to dict
     kpis_dict = season_recap.to_dict(orient="index")
+    
+    # Add all ranks counts to the kpi dict
+    for team, row in rank_counts.iterrows():
+        kpis_dict[team]["Rank_Counts"] = row.to_dict()
+        
     # Store result
     TASKS[task_id]["result"] = {
         "kpis": kpis_dict
